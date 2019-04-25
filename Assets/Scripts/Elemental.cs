@@ -7,7 +7,8 @@ public class Elemental : MonoBehaviour
     [SerializeField]
     private Characteristic characteristicData;
 
-    void OnMouseDown()
+    void Awake()
     {
+
     }
 }

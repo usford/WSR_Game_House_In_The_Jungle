@@ -31,6 +31,10 @@ public class Characteristic : ScriptableObject
         {
             return hp;
         }
+        set
+        {
+            hp = value;
+        }
     }
 
     public int ActionPoints

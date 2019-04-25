@@ -28,6 +28,10 @@ public class Weapons : ScriptableObject
         {
             return nameWeapon;
         }
+        set
+        {
+            nameWeapon = value;
+        }
     }
 
     public int Damage

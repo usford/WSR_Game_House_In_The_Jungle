@@ -9007,7 +9007,6 @@ PrefabInstance:
         type: 3}
       propertyPath: characteristicData
       value: 
-      objectReference: {fileID: 11400000, guid: 948452becb658dd4b80cca8ff611dbf0,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156bb7de2a33ac342a81d723e5dfe43d, type: 3}
