@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb6cd09b8154bb49be877920fec5d27, type: 3}
   m_Name: Thunderbird_armor
   m_EditorClassIdentifier: 
-  nameArmor: "\u0414\u043E\u0441\u043F\u0435\u044A \u0431\u0443\u0440\u0435\u0432\u0435\u0441\u0442\u043D\u0438\u043A\u0430"
+  nameArmor: "\u0414\u043E\u0441\u043F\u0435\u0445 \u0431\u0443\u0440\u0435\u0432\u0435\u0441\u0442\u043D\u0438\u043A\u0430"
   spriteArmor: {fileID: 21300000, guid: 45849faaa1cda544d91bc37507dd5770, type: 3}
   protection: 30
   type: 3

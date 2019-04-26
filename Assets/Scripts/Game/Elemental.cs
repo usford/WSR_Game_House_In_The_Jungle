@@ -32,25 +32,21 @@ public class Elemental : MonoBehaviour
         {
             case 0:
                 sprite.color = Color.red;
-                Debug.Log(sprite.color + "::::: "+characteristicData.name);
                 characteristicData.TypePerson = Characteristic.Type.Lava;
                 break;
 
             case 1:
                 sprite.color = Color.white;
-                Debug.Log(sprite.color + "::::: " + characteristicData.name);
                 characteristicData.TypePerson = Characteristic.Type.Ocean;
                 break;
 
             case 2:
                 sprite.color = Color.green;
-                Debug.Log(sprite.color + "::::: " + characteristicData.name);
                 characteristicData.TypePerson = Characteristic.Type.Forest;
                 break;
 
             case 3:
                 sprite.color = new Color(0.757311f, 0.3685475f, 0.7735849f, 1f);
-                Debug.Log(sprite.color + "::::: " + characteristicData.name);
                 characteristicData.TypePerson = Characteristic.Type.Air;
                 break;
         }
@@ -111,5 +107,28 @@ public class Elemental : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("HP: " + characteristicData.HP);
+        Debug.Log("ОД: " + characteristicData.ActionPoints);
+        switch(characteristicData.TypePerson)
+        {
+            case Characteristic.Type.Lava:
+                Debug.Log("Тип элементаля: " + "Лава");
+                break;
+
+            case Characteristic.Type.Ocean:
+                Debug.Log("Тип элементаля: " + "Океан");
+                break;
+
+            case Characteristic.Type.Forest:
+                Debug.Log("Тип элементаля: " + "Камень и лес");
+                break;
+
+            case Characteristic.Type.Air:
+                Debug.Log("Тип элементаля: " + "Воздух и гроза");
+                break;
+
+        }
+        Debug.Log("Название оружия: " + characteristicData.Weapon.NameWeapon);
+        Debug.Log("Название брони: " + characteristicData.Armor.NameArmor);
     }
 }

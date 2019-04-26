@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Tooltip("Скорость персонажа")]
     [SerializeField]
     private float speed = 2.0f;
 
+    [Tooltip("Характеристика")]
+    [SerializeField]
+    private Characteristic characteristicData;
 
     Rigidbody2D rb;
     SpriteRenderer sprite;
