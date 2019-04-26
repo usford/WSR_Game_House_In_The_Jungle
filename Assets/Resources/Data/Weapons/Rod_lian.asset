@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa67494bae8268c4883d0f725acd3072, type: 3}
+  m_Name: Rod_lian
+  m_EditorClassIdentifier: 
+  nameWeapon: "\u0416\u0435\u0437\u043B \u043B\u0438\u0430\u043D"
+  spriteWeapon: {fileID: 21300000, guid: 10a4a756b67684ae7a29b0ee3a7d63d3, type: 3}
+  damage: 50
+  type: 2
+  additionalEffect: 5

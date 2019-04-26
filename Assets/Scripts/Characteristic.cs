@@ -5,16 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Characteristic", menuName = "Scriptable Object/New Characteristic")]
 public class Characteristic : ScriptableObject
 {
+    [Tooltip("HP персонажа")]
     [SerializeField]
-    private int hp; //HP персонажа
+    private int hp;
+
+    [Tooltip("Очки действия")]
     [SerializeField]
-    private int actionPoints; //Очки действия
+    private int actionPoints;
+
+    [Tooltip("Тип существа")]
     [SerializeField]
-    private Type type; //Тип персонажа/элементаля
+    private Type type;
+
+    [Tooltip("Оружие")]
     [SerializeField]
-    private Weapons weapon; //Оружие
+    private Weapons weapon;
+
+    [Tooltip("Броня")]
     [SerializeField]
-    private string armor; //Броня
+    private Armors armor; //Броня
 
     public enum Type
     {
@@ -43,13 +52,21 @@ public class Characteristic : ScriptableObject
         {
             return actionPoints;
         }
+        set
+        {
+            actionPoints = value;
+        }
     }
 
-    public Type typePerson
+    public Type TypePerson
     {
         get
         {
             return type;
+        }
+        set
+        {
+            type = value;
         }
     }
 
@@ -59,13 +76,21 @@ public class Characteristic : ScriptableObject
         {
             return weapon;
         }
+        set
+        {
+            weapon = value;
+        }
     }
 
-    public string Armor
+    public Armors Armor
     {
         get
         {
             return armor;
+        }
+        set
+        {
+            armor = value;
         }
     }
 } 

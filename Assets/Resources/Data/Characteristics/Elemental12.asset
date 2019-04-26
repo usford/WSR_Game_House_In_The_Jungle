@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682cde2c0a39b3548afb63fafc4f48a0, type: 3}
+  m_Name: Elemental12
+  m_EditorClassIdentifier: 
+  hp: 600
+  actionPoints: 10
+  type: 3
+  weapon: {fileID: 11400000, guid: a3bfb1ce2880ee24a80aca8ae3c9a28e, type: 2}
+  armor: {fileID: 11400000, guid: 8b1ac554aade8554cad7644918be3ab5, type: 2}

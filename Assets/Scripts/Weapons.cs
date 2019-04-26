@@ -5,14 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Scriptable Object/New Weapon")]
 public class Weapons : ScriptableObject
 {
+    [Tooltip("Название оружия")]
     [SerializeField]
-    private string nameWeapon; //Название оружия
+    private string nameWeapon;
+
+    [Tooltip("Картинка оружия")]
     [SerializeField]
-    private int damage; //Урон
+    private  Sprite spriteWeapon;
+
+    [Tooltip("Урон")]
     [SerializeField]
-    private Type type; //Тип оружия
+    private int damage;
+
+    [Tooltip("Тип оружия/эффект")]
     [SerializeField]
-    private string additionalEffect; //Дополнительный эффект
+    private Type type;
+
+    [Tooltip("Дополнительный эффект")]
+    [SerializeField]
+    private AdditionalEffect additionalEffect; //Дополнительный эффект
 
     public enum Type
     {
@@ -20,6 +31,19 @@ public class Weapons : ScriptableObject
         Ocean, //Океан
         Forest, //Камень и лес
         Air //Воздух и гроза
+    }
+
+    public enum AdditionalEffect
+    {
+        None, //Нет дополнительных эффектов
+        IgnoresProtection, //Игнорирует защиту соперника
+        TakesAEnemyTwoAPPerTurn, //Отнимает у игрока 2 од на ход
+        TakesAEnemyThreeAPPerTurn, //Отнимает у игрока 3 од на ход
+        TheEnemyHasOnlyAttackOnTheMove, //Блокирует врагу все действия кроме атаки на ход
+        WhenAttackingHealsYouFortyDamageHealth, //При атаке восстанавливает вам 40 ед. здоровья
+        IncreasesYoursAPByOne, //Увеличивает ваши ОД на 1
+        WhenUsingAimingYouCanAttackTwicePerTurnWithThisWeapon, //При использовании прицеливания вы можете атаковать дважды за ход этим оружием
+        IncreasesYoursAPByTwo //Увеличивает ваши ОД на 2
     }
 
     public string NameWeapon
@@ -34,11 +58,27 @@ public class Weapons : ScriptableObject
         }
     }
 
+    public Sprite SpriteWeapon
+    {
+        get
+        {
+            return spriteWeapon;
+        }
+        set
+        {
+            spriteWeapon = value;
+        }
+    }
+
     public int Damage
     {
         get
         {
             return damage;
+        }
+        set
+        {
+            damage = value;
         }
     }
 
@@ -48,13 +88,21 @@ public class Weapons : ScriptableObject
         {
             return type;
         }
+        set
+        {
+            type = value;
+        }
     }
 
-    public string AdditionalEffect
+    public AdditionalEffect AdditionalEffectWeapon
     {
         get
         {
             return additionalEffect;
+        }
+        set
+        {
+            additionalEffect = value;
         }
     }
 }
