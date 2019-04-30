@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Elemental : MonoBehaviour
 {
@@ -13,11 +15,22 @@ public class Elemental : MonoBehaviour
 
     private SpriteRenderer sprite;
 
+    public GameObject panelDiscription; //Описание монстра при начале боя
+
+    //Панель с описанием элементаля
+    private Transform[] pnlDiscriptionChildren;
+
     private void Awake()
     {
         weapons.AddRange(Resources.LoadAll<Weapons>("Data/Weapons/"));
         armors.AddRange(Resources.LoadAll<Armors>("Data/Armors/"));
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        pnlDiscriptionChildren = new Transform[50];
+        for (int i = 0; i < panelDiscription.transform.childCount; i++)
+        {
+            pnlDiscriptionChildren[i] = panelDiscription.transform.GetChild(i);
+        }
     }
 
     //Красный FF3800 RGB(255, 56, 0)
@@ -130,5 +143,23 @@ public class Elemental : MonoBehaviour
         }
         Debug.Log("Название оружия: " + characteristicData.Weapon.NameWeapon);
         Debug.Log("Название брони: " + characteristicData.Armor.NameArmor);
+    }
+
+    /// <summary>
+    /// Начало боя
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            panelDiscription.SetActive(true);
+
+            pnlDiscriptionChildren[4].GetComponent<Text>().text = characteristicData.HP.ToString();
+            pnlDiscriptionChildren[5].GetComponent<Text>().text = characteristicData.ActionPoints.ToString();
+            pnlDiscriptionChildren[7].GetComponent<Text>().text = characteristicData.TypePerson.ToString();
+            pnlDiscriptionChildren[9].GetComponent<Text>().text = characteristicData.Weapon.NameWeapon.ToString();
+            pnlDiscriptionChildren[11].GetComponent<Text>().text = characteristicData.Armor.NameArmor.ToString();
+        }
     }
 }
