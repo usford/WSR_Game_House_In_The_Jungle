@@ -21,9 +21,18 @@ public class MouseOnItem : MonoBehaviour
     [SerializeField]
     private Armors armor;
 
+
     [Tooltip("Тип")]
     [SerializeField]
     private Type type;
+
+    [Tooltip("Кнопка с оружием")]
+    [SerializeField]
+    private GameObject btnSelectedWeapon;
+
+    [Tooltip("Кнопка с бронёй")]
+    [SerializeField]
+    private GameObject btnSelectedArmor;
 
     public enum Type
     {
@@ -84,77 +93,82 @@ public class MouseOnItem : MonoBehaviour
     }
     public void OnMouseEnter()
     {
-
         switch (type)
         {
             case Type.Weapon:
                 {
-                    pnlWeaponChildren[1].GetComponent<Text>().text = "Название оружия: ";
-                    pnlWeaponChildren[2].GetComponent<Text>().text = "Урон: ";
-                    pnlWeaponChildren[3].GetComponent<Text>().text = "Тип оружия: ";
-                    pnlWeaponChildren[4].GetComponent<Text>().text = "Дополнительный эффект: ";
-
-                    panelWeapon.SetActive(true);
-                    pnlWeaponChildren[0].GetComponent<Image>().sprite = weapon.SpriteWeapon;
-                    pnlWeaponChildren[1].GetComponent<Text>().text += weapon.NameWeapon;
-                    pnlWeaponChildren[2].GetComponent<Text>().text += weapon.Damage;
-
-                    switch(weapon.TypeWeapon)
+                    if (weapon != null)
                     {
-                        case Weapons.Type.Lava:
-                            pnlWeaponChildren[3].GetComponent<Text>().text += "Лава";
-                            break;
+                        pnlWeaponChildren[1].GetComponent<Text>().text = "Название оружия: ";
+                        pnlWeaponChildren[2].GetComponent<Text>().text = "Урон: ";
+                        pnlWeaponChildren[3].GetComponent<Text>().text = "Тип оружия: ";
+                        pnlWeaponChildren[4].GetComponent<Text>().text = "Дополнительный эффект: ";
 
-                        case Weapons.Type.Ocean:
-                            pnlWeaponChildren[3].GetComponent<Text>().text += "Океан";
-                            break;
+                        panelWeapon.SetActive(true);
+                        pnlWeaponChildren[0].GetComponent<Image>().sprite = weapon.SpriteWeapon;
+                        pnlWeaponChildren[1].GetComponent<Text>().text += weapon.NameWeapon;
+                        pnlWeaponChildren[2].GetComponent<Text>().text += weapon.Damage;
 
-                        case Weapons.Type.Forest:
-                            pnlWeaponChildren[3].GetComponent<Text>().text += "Камень и лес";
-                            break;
+                        switch (weapon.TypeWeapon)
+                        {
+                            case Weapons.Type.Lava:
+                                pnlWeaponChildren[3].GetComponent<Text>().text += "Лава";
+                                break;
 
-                        case Weapons.Type.Air:
-                            pnlWeaponChildren[3].GetComponent<Text>().text += "Воздух и гроза";
-                            break;
+                            case Weapons.Type.Ocean:
+                                pnlWeaponChildren[3].GetComponent<Text>().text += "Океан";
+                                break;
+
+                            case Weapons.Type.Forest:
+                                pnlWeaponChildren[3].GetComponent<Text>().text += "Камень и лес";
+                                break;
+
+                            case Weapons.Type.Air:
+                                pnlWeaponChildren[3].GetComponent<Text>().text += "Воздух и гроза";
+                                break;
+                        }
+
+                        pnlWeaponChildren[4].GetComponent<Text>().text += weapon.AdditionalEffectWeapon;
                     }
-                    
-                    pnlWeaponChildren[4].GetComponent<Text>().text += weapon.AdditionalEffectWeapon;
 
                     break;
                 }
 
             case Type.Armor:
                 {
-                    pnlArmorChildren[1].GetComponent<Text>().text = "Название брони: ";
-                    pnlArmorChildren[2].GetComponent<Text>().text = "Защита: ";
-                    pnlArmorChildren[3].GetComponent<Text>().text = "Тип брони: ";
-                    pnlArmorChildren[4].GetComponent<Text>().text = "Дополнительный эффект: ";
-
-                    panelArmor.SetActive(true);
-                    pnlArmorChildren[0].GetComponent<Image>().sprite = armor.SpriteArmor;
-                    pnlArmorChildren[1].GetComponent<Text>().text += armor.NameArmor;
-                    pnlArmorChildren[2].GetComponent<Text>().text += armor.Protection + "%";
-
-                    switch (armor.TypeArmor)
+                    if (armor != null)
                     {
-                        case Armors.Type.Lava:
-                            pnlArmorChildren[3].GetComponent<Text>().text += "Лава";
-                            break;
+                        pnlArmorChildren[1].GetComponent<Text>().text = "Название брони: ";
+                        pnlArmorChildren[2].GetComponent<Text>().text = "Защита: ";
+                        pnlArmorChildren[3].GetComponent<Text>().text = "Тип брони: ";
+                        pnlArmorChildren[4].GetComponent<Text>().text = "Дополнительный эффект: ";
 
-                        case Armors.Type.Ocean:
-                            pnlArmorChildren[3].GetComponent<Text>().text += "Океан";
-                            break;
+                        panelArmor.SetActive(true);
+                        pnlArmorChildren[0].GetComponent<Image>().sprite = armor.SpriteArmor;
+                        pnlArmorChildren[1].GetComponent<Text>().text += armor.NameArmor;
+                        pnlArmorChildren[2].GetComponent<Text>().text += armor.Protection + "%";
 
-                        case Armors.Type.Forest:
-                            pnlArmorChildren[3].GetComponent<Text>().text += "Камень и лес";
-                            break;
+                        switch (armor.TypeArmor)
+                        {
+                            case Armors.Type.Lava:
+                                pnlArmorChildren[3].GetComponent<Text>().text += "Лава";
+                                break;
 
-                        case Armors.Type.Air:
-                            pnlArmorChildren[3].GetComponent<Text>().text += "Воздух и гроза";
-                            break;
+                            case Armors.Type.Ocean:
+                                pnlArmorChildren[3].GetComponent<Text>().text += "Океан";
+                                break;
+
+                            case Armors.Type.Forest:
+                                pnlArmorChildren[3].GetComponent<Text>().text += "Камень и лес";
+                                break;
+
+                            case Armors.Type.Air:
+                                pnlArmorChildren[3].GetComponent<Text>().text += "Воздух и гроза";
+                                break;
+                        }
+
+                        pnlArmorChildren[4].GetComponent<Text>().text += armor.AdditionalEffectArmor;
                     }
-
-                    pnlArmorChildren[4].GetComponent<Text>().text += armor.AdditionalEffectArmor;
                     break;
                 }
         }
@@ -173,6 +187,26 @@ public class MouseOnItem : MonoBehaviour
             case Type.Armor:
                 {
                     panelArmor.SetActive(false);
+                    break;
+                }
+        }
+    }
+
+    public void OnClick()
+    {
+        switch(type)
+        {
+            case Type.Weapon:
+                {
+                    btnSelectedWeapon.GetComponent<MouseOnItem>().weapon = weapon;
+                    btnSelectedWeapon.GetComponent<Image>().sprite = weapon.SpriteWeapon;
+                    break;
+                }
+
+            case Type.Armor:
+                {
+                    btnSelectedArmor.GetComponent<MouseOnItem>().armor = armor;
+                    btnSelectedArmor.GetComponent<Image>().sprite = armor.SpriteArmor;
                     break;
                 }
         }

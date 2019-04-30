@@ -12,6 +12,10 @@ public class BeginMenu : MonoBehaviour
     private List<Weapons> weapons = new List<Weapons>(); //Оружие элементаля
     private List<Armors> armors = new List<Armors>(); //Броня элементаля
 
+   
+
+    
+
 
     [SerializeField]
     private GameObject panelWeapon;
@@ -20,9 +24,17 @@ public class BeginMenu : MonoBehaviour
     [SerializeField]
     private GameObject panelArmor;
 
+    [SerializeField]
+    private GameObject selectedWeapon;
+
+    [SerializeField]
+    private GameObject selectedArmor;
+
+    [SerializeField]
+    private Characteristic characteristic;
+
     private void Awake()
     {
-
         panelWeapon.SetActive(false);
         panelArmor.SetActive(false);
 
@@ -43,6 +55,26 @@ public class BeginMenu : MonoBehaviour
     private void Start()
     {
         RandomItem();
+    }
+
+    public void NewGame()
+    {
+        if (selectedWeapon.GetComponent<MouseOnItem>().Weapon != null && selectedArmor.GetComponent<MouseOnItem>().Armor != null)
+        {
+            characteristic.Weapon = selectedWeapon.GetComponent<MouseOnItem>().Weapon;
+            characteristic.Armor = selectedArmor.GetComponent<MouseOnItem>().Armor;
+            SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        }
+
+        if (selectedWeapon.GetComponent<MouseOnItem>().Weapon == null)
+        {
+            Debug.Log("Нет оружия");
+        }
+
+        if (selectedArmor.GetComponent<MouseOnItem>().Armor == null)
+        {
+            Debug.Log("Нет брони");
+        }
     }
 
     public void BackToMenu()
