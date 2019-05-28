@@ -15,6 +15,30 @@ public class Character : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sprite;
 
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value;
+        }
+    }
+
+    public Characteristic CharacteristicData
+    {
+        get
+        {
+            return characteristicData;
+        }
+        set
+        {
+            characteristicData = value;
+        }
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
