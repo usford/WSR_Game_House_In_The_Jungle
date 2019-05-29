@@ -15,5 +15,5 @@ MonoBehaviour:
   hp: 700
   actionPoints: 10
   type: 0
-  weapon: {fileID: 0}
-  armor: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 446ee0b8f5b9e6a4296eb334bd43ebd4, type: 2}
+  armor: {fileID: 11400000, guid: 39d4aa2d7081b79409ccf4ae8d3717d4, type: 2}

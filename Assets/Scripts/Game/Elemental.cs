@@ -17,20 +17,34 @@ public class Elemental : MonoBehaviour
 
     public GameObject panelDiscription; //Описание монстра при начале боя
 
+
     //Панель с описанием элементаля
     private Transform[] pnlDiscriptionChildren;
 
-    private void Awake()
+    public Characteristic CharacteristicData
     {
+        get
+        {
+            return characteristicData;
+        }
+        set
+        {
+            characteristicData = value;
+        }
+    }
+
+    private void Awake()
+    {   
         weapons.AddRange(Resources.LoadAll<Weapons>("Data/Weapons/"));
         armors.AddRange(Resources.LoadAll<Armors>("Data/Armors/"));
         sprite = GetComponentInChildren<SpriteRenderer>();
 
         pnlDiscriptionChildren = new Transform[50];
+
         for (int i = 0; i < panelDiscription.transform.childCount; i++)
         {
             pnlDiscriptionChildren[i] = panelDiscription.transform.GetChild(i);
-        }
+        }  
     }
 
     //Красный FF3800 RGB(255, 56, 0)
@@ -118,32 +132,32 @@ public class Elemental : MonoBehaviour
         characteristicData.Armor = armors[random];
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("HP: " + characteristicData.HP);
-        Debug.Log("ОД: " + characteristicData.ActionPoints);
-        switch(characteristicData.TypePerson)
-        {
-            case Characteristic.Type.Lava:
-                Debug.Log("Тип элементаля: " + "Лава");
-                break;
+    //private void OnMouseDown()
+    //{
+    //    Debug.Log("HP: " + characteristicData.HP);
+    //    Debug.Log("ОД: " + characteristicData.ActionPoints);
+    //    switch(characteristicData.TypePerson)
+    //    {
+    //        case Characteristic.Type.Lava:
+    //            Debug.Log("Тип элементаля: " + "Лава");
+    //            break;
 
-            case Characteristic.Type.Ocean:
-                Debug.Log("Тип элементаля: " + "Океан");
-                break;
+    //        case Characteristic.Type.Ocean:
+    //            Debug.Log("Тип элементаля: " + "Океан");
+    //            break;
 
-            case Characteristic.Type.Forest:
-                Debug.Log("Тип элементаля: " + "Камень и лес");
-                break;
+    //        case Characteristic.Type.Forest:
+    //            Debug.Log("Тип элементаля: " + "Камень и лес");
+    //            break;
 
-            case Characteristic.Type.Air:
-                Debug.Log("Тип элементаля: " + "Воздух и гроза");
-                break;
+    //        case Characteristic.Type.Air:
+    //            Debug.Log("Тип элементаля: " + "Воздух и гроза");
+    //            break;
 
-        }
-        Debug.Log("Название оружия: " + characteristicData.Weapon.NameWeapon);
-        Debug.Log("Название брони: " + characteristicData.Armor.NameArmor);
-    }
+    //    }
+    //    Debug.Log("Название оружия: " + characteristicData.Weapon.NameWeapon);
+    //    Debug.Log("Название брони: " + characteristicData.Armor.NameArmor);
+    //}
 
     /// <summary>
     /// Начало боя
@@ -160,6 +174,15 @@ public class Elemental : MonoBehaviour
             pnlDiscriptionChildren[7].GetComponent<Text>().text = characteristicData.TypePerson.ToString();
             pnlDiscriptionChildren[9].GetComponent<Text>().text = characteristicData.Weapon.NameWeapon.ToString();
             pnlDiscriptionChildren[11].GetComponent<Text>().text = characteristicData.Armor.NameArmor.ToString();
+
+            //GameObject go = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+            //go.transform.SetParent(panelDiscription.transform);
+            
+            pnlDiscriptionChildren[12].GetComponent<Elemental>().CharacteristicData = gameObject.GetComponent<Elemental>().CharacteristicData;
+            pnlDiscriptionChildren[12].GetComponent<Elemental>().panelDiscription = gameObject.GetComponent<Elemental>().panelDiscription;
+
+            pnlDiscriptionChildren[12].GetComponentInChildren<SpriteRenderer>().sprite = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+            pnlDiscriptionChildren[12].GetComponentInChildren<SpriteRenderer>().color = gameObject.GetComponentInChildren<SpriteRenderer>().color;
         }
     }
 }
